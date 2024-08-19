@@ -1,0 +1,17 @@
+{
+    "name": "lenovo/jwt_api",
+    "autoload": {
+        "psr-4": {
+            "Lenovo\\JwtApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "harishm0294",
+            "email": "harishmeshram0294@gmail.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.10"
+    }
+}
