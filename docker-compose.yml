@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  php:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: php-container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: jwt_api
+      MYSQL_USER: root
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8080:80"
+  
+  mysql:
+    image: mysql:8.0.30
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: jwt_api
+      MYSQL_USER: root
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
