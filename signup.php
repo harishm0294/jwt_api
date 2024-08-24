@@ -13,7 +13,7 @@ function isMediumStrengthPassword($password) {
 }
 
 try {
-    $db = new PDO('mysql:host=localhost;dbname=jwt_api', 'root', '');
+    $db = new PDO('mysql:host=localhost;dbname=jwt_api', 'root', 'root');
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

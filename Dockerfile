@@ -1,57 +1,49 @@
-# Use an official PHP-Apache base image
+# Dockerfile
+
+# Use the official PHP image with Apache
 FROM php:8.0-apache
 
-# Set the environment variable for the correct timezone
-ENV TZ=UTC
-
-# Install necessary packages and PHP extensions
+# Install required PHP extensions and Composer
 RUN apt-get update && apt-get install -y \
-    apache2 \
-    zip \
-    unzip \
-    git \
-    curl \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
-    libonig-dev \
-    libxml2-dev \
-    libzip-dev \
+    zip \
+    unzip \
+    git \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd mbstring pdo pdo_mysql zip exif pcntl bcmath
+    && docker-php-ext-install pdo pdo_mysql gd
+
+# Install Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Set the working directory
+WORKDIR /var/www/html
+
+# Copy the application code
+COPY . /var/www/html
+
+# Ensure web server can write to application files
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 777 /var/www/html
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=2.6.0
+# Modify the default Apache configuration to include "Require all granted"
+RUN echo "<Directory /var/www/html>\n\
+    Options Indexes FollowSymLinks\n\
+    AllowOverride All\n\
+    Require all granted\n\
+</Directory>" > /etc/apache2/conf-available/custom-directory.conf
 
-# Copy application files
-COPY . /var/www/html
+# Enable the new custom configuration
+RUN a2enconf custom-directory
 
-# Set working directory
-WORKDIR /var/www/html
-
-# Set the correct permissions
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
-
-# Expose port 80 to the host
+# Expose port 80
 EXPOSE 80
 
-# Start Apache server
-#CMD ["apache2-foreground"]
-RUN docker-php-ext-install pdo_mysql
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+# Start Apache in the foreground
+CMD ["apache2-foreground"]
 
-# MySQL setup
-FROM mysql:8.0.30
-ENV MYSQL_ROOT_PASSWORD=root
-ENV MYSQL_DATABASE=jwt_api
-ENV MYSQL_USER=root
-ENV MYSQL_ALLOW_EMPTY_PASSWORD=yes
-# Expose MySQL port
-EXPOSE 3306
-
-# Start MySQL server
-CMD ["mysqld"]
+RUN echo "the server is running at http://localhost:8080/"

@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteRule ^signup signup.php [L,QSA]
+RewriteRule ^signin signin.php [L,QSA]
+RewriteRule ^refresh-token refresh-token.php [L,QSA]
+RewriteRule ^verify-token verify-token.php [L,QSA]
