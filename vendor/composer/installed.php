@@ -3,7 +3,7 @@
         'name' => 'lenovo/jwt_api',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '141173ee43973c9e04e6f548fc2c19663d07a179',
+        'reference' => 'e0682eb383fea52093d00b79940a4bf59ea24d18',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'lenovo/jwt_api' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '141173ee43973c9e04e6f548fc2c19663d07a179',
+            'reference' => 'e0682eb383fea52093d00b79940a4bf59ea24d18',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

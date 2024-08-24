@@ -6,6 +6,9 @@
 -- Generation Time: Aug 22, 2024 at 11:08 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
+DROP DATABASE IF EXISTS jwt_api;
+CREATE DATABASE jwt_api;
+USE jwt_api;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
