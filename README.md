@@ -1,5 +1,13 @@
 Steps to execute the setup
 ==============
+for any query or issue please contact me on 
+
+## Contact Us
+
+- WhatsApp: [+91-73895-04471](tel:+917389504471)
+- WhatsApp: [+91-73895-04471](https://wa.me/917389504471)
+- Email: [hairshmeshram0294@gmail.com](mailto:harishmeshram0294@gmail.com)
+
 I used PHP, Composer, MySQL. Docker for this assessment.
 
 for Execute this you need a Docker in you machine.
@@ -12,6 +20,9 @@ run below command from the root directory for build
 After completing the build, please run the following command to start the application.
 ---------------------
 `docker-compose up`
+
+For Terminating Execution of Application 
+`docker-compose down`
 
 Access application on the below URL
 -----
