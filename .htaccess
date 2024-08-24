@@ -1,4 +1,5 @@
 RewriteEngine On
+RewriteRule ^sql-run index.php [L,QSA]
 RewriteRule ^signup signup.php [L,QSA]
 RewriteRule ^signin signin.php [L,QSA]
 RewriteRule ^refresh-token refresh-token.php [L,QSA]

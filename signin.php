@@ -6,7 +6,7 @@ $secretKey = 'your-secret-key';
 $refreshSecretKey = 'your-refresh-secret-key';
 
 try {
-    $db = new PDO('mysql:host=localhost;dbname=jwt_api', 'root', '');
+    $db = new PDO('mysql:host=db;dbname=jwt_api', 'root', 'rootpassword');
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email'];

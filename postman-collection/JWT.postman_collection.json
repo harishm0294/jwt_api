@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "eb5dd983-3b6e-4823-aa17-4bdf99997055",
+		"name": "JWT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28789798"
+	},
+	"item": [
+		{
+			"name": "SignUp API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "harishm0294@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "H@rish0294",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"signup"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "harishm0294",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign In API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "harishm0294@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "H@rish0294",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/signin"
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost/jwt_api/refresh-token.php"
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/verify-token?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiZXhwIjoxNzI0NDkyNjY4fQ.spmSSFaLalnjAAQex0NXqC_oaFnkY7nSaC6fnQF8AVQ",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"verify-token"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiZXhwIjoxNzI0NDkyNjY4fQ.spmSSFaLalnjAAQex0NXqC_oaFnkY7nSaC6fnQF8AVQ"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -16,25 +16,9 @@ function isMediumStrengthPassword($password) {
     return $lengthCheck && $letterAndNumberCheck && $specialCharacterCheck;
 }
 
-$servername = "db"; // This refers to the MySQL service in docker-compose
-$username = "root";
-$password = "rootpassword";
-$dbname = "jwt_api";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
-die;
-
-$db1 = new PDO('mysql:host=http://localhost:8080/;dbname=jwt_api', 'root', 'root');
-    echo '<pre>';print_r($db1);die;
 try {
-    $db = new PDO('mysql:host=localhost;dbname=jwt_api', 'root', 'root');
-    echo '<pre>';print_r($db);die;
+    $db = new PDO('mysql:host=db;dbname=jwt_api', 'root', 'rootpassword');
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $email = $_POST['email'];
