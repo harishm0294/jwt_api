@@ -1,28 +1,53 @@
-System requirement
+Steps to execute the setup
 ==============
+I used PHP, Composer, MySQL. Docker for this assessment.
 
-PHP version 8.0.30
-
-Composer version 2
-
-MySQL you can import jwt_api.sql file. that is located in root directory.
-
-or you can run below sql commands
+for Execute this you need a Docker in you machine.
 
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `refresh_token` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+run below command from the root directory for build
+------------------
+`docker-compose build`
 
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`email`);
+After completing the build, please run the following command to start the application.
+---------------------
+`docker-compose up`
 
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+Access application on the below URL
+-----
+`http://localhost:8080/`
+
+please open this URL to any web browser or via postman. 
+this is first get api will execute a SQL statement for
+
+Create `users` table in DB.
+
+Postman Collection
+-----------
+From the root directory of Repository you will see a [`postman-collection`](https://github.com/harishm0294/jwt_api/tree/main/postman-collection) named folder inside that folder you will get a postman collection of apis. you can import it in you postman application.
+
+CURL commands listing
+-----------
+
+1. for creating users table: `curl --location 'http://localhost:8080/'`.
+
+2. Sign up API:
+ `curl --location 'http://localhost:8080/signup' \
+--form 'email="harishm0294@gmail.com"' \
+--form 'password="H@rish0294"'`
+
+3. Sign in API:
+`curl --location 'http://localhost:8080/signin' \
+--form 'email="harishm0294@gmail.com"' \
+--form 'password="H@rish0294"'`
+
+4. Refresh Token API :
+`curl --location 'http://localhost:8080/refresh-token' \
+--form 'refreshToken="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiZXhwIjoxNzI1MDk3NDM4fQ.VI01TFKPSlAYqUPtXPTzZHlU8vTLNhB2Ms0uS7MVfYI"'`
+
+5. Verify Token API:
+`curl --location 'http://localhost:8080/refresh-token' \
+--form 'refreshToken="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiZXhwIjoxNzI1MDk3NDM4fQ.VI01TFKPSlAYqUPtXPTzZHlU8vTLNhB2Ms0uS7MVfYI"'`
+
+
+
