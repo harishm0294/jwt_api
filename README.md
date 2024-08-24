@@ -58,7 +58,7 @@ CURL commands listing
 
 5. Verify Token API:
 `curl --location 'http://localhost:8080/verify-token' \
---form 'refreshToken="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiZXhwIjoxNzI1MDk3NDM4fQ.VI01TFKPSlAYqUPtXPTzZHlU8vTLNhB2Ms0uS7MVfYI"'`
+--form 'token‎="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiZXhwIjoxNzI1MDk3NDM4fQ.VI01TFKPSlAYqUPtXPTzZHlU8vTLNhB2Ms0uS7MVfYI"'`
 
 
 
